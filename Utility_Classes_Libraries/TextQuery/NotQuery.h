@@ -4,6 +4,8 @@
     #include "Query_base.h"
     #include "Query.h"
 
+namespace CPlusPlus_Primer
+{
     class NotQuery : public Query_base
     {
         friend Query operator~(const Query&);
@@ -15,5 +17,6 @@
     private:
         const Query query;
     };
+}
 
 #endif  /* NOT_QUERY_H */

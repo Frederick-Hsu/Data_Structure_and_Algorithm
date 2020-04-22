@@ -1,5 +1,7 @@
 #include "NotQuery.h"
 
+namespace CPlusPlus_Primer
+{
 NotQuery::NotQuery(Query q) : query(q)
 {
 }
@@ -27,4 +29,5 @@ set<TextQuery::line_no> NotQuery::eval(const TextQuery& file) const
         }
     }
     return ret_lines;
+}
 }

@@ -17,16 +17,48 @@
 	class Stack
 	{
 	public:
-		Stack()
-		{
-			pool.reserve(capacity);
-		}
-
+        Stack();
 		void clear();
+        bool isEmpty() const;
+        T& topElement();
+        T pop();
+        void push(const T& element);
 	private:
 		vector<T> pool;
 	};
 
-	// #include "genStack.cpp"
+	/*===============================================================================================*/
+
+    template<class T, int capacity> Stack<T, capacity>::Stack()
+    {
+        pool.reserve(capacity);
+    }
+
+    template<class T, int capacity> void Stack<T, capacity>::clear()
+    {
+        pool.clear();
+    }
+
+    template<class T, int capacity> bool Stack<T, capacity>::isEmpty() const
+    {
+        return pool.empty();
+    }
+
+    template<class T, int capacity> T& Stack<T, capacity>::topElement()
+    {
+        return pool.back();
+    }
+
+    template<class T, int capacity> T Stack<T, capacity>::pop()
+    {
+        T element = topElement();
+        pool.pop_back();
+        return element;
+    }
+
+    template<class T, int capacity> void Stack<T, capacity>::push(const T& element)
+    {
+        pool.push_back(element);
+    }
 
 #endif	/* GENSTACK_H */

@@ -5,6 +5,8 @@
     #include <string>
     using namespace std;
 
+namespace BookStore
+{
     #define NDEBUG
 
     class Item_base;
@@ -32,6 +34,7 @@
 
     void print_total(ostream& os, const Item_base& item, size_t n);
     void get_price(Item_base object, const Item_base* pointer, const Item_base& reference);
+}
 
 
 #endif  /* ITEM_BASE_H */

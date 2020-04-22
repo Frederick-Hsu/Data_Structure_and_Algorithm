@@ -3,6 +3,8 @@
 
     #include "Query_base.h"
 
+namespace CPlusPlus_Primer
+{
     class WordQuery : public Query_base
     {
         friend class Query;
@@ -13,5 +15,6 @@
     private:
         string query_word;      /* word for which to search */
     };
+}
 
 #endif  /* WORD_QUERY_H */

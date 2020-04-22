@@ -4,6 +4,8 @@
     #include <cstddef>
     #include "Item_base.h"
 
+namespace BookStore
+{
     class Sales_item    /* use counted handle class for the Item_base hierarchy */
     {
     public:
@@ -31,5 +33,6 @@
 
     /* type of the comparison function used to order the multiset */
     typedef bool (*Comp)(const Sales_item&, const Sales_item&);
+}
 
 #endif  /* SALES_ITEM_H */

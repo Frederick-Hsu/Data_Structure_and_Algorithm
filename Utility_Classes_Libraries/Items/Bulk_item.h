@@ -3,6 +3,8 @@
 
     #include "Disc_item.h"
 
+namespace BookStore
+{
     class Bulk_item;
 
     /* discount kicks in when a specified number of copies of same book are
@@ -22,5 +24,6 @@
         Bulk_item* clone() const;
     private:
     };
+}
 
 #endif  /* BULK_ITEM_H */

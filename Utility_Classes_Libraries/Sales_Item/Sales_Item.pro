@@ -30,6 +30,7 @@ SOURCES += \
         ScreenPtr.cpp \
         SmallInt.cpp \
         Window_Mgr.cpp \
+        exceptions.cpp \
         misc.cpp
 
 HEADERS += \
@@ -41,6 +42,7 @@ HEADERS += \
         ScreenPtr.h \
         SmallInt.h \
         Window_Mgr.h \
+        exceptions.h \
         misc.h
 unix {
     target.path = /usr/lib

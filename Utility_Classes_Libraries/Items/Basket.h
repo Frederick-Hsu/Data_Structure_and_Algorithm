@@ -4,6 +4,8 @@
     #include "Sales_item.h"
     #include <set>
 
+namespace BookStore
+{
     class Basket
     {
         typedef bool (*Comp)(const Sales_item&, const Sales_item&);
@@ -20,5 +22,6 @@
         size_type size(const Sales_item& item) const;
         double total() const;
     };
+}
 
 #endif  /* BASKET_H */

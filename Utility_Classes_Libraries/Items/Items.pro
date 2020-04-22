@@ -26,14 +26,18 @@ SOURCES += \
     Bulk_item.cpp \
     Disc_item.cpp \
     Item_base.cpp \
-    Sales_item.cpp
+    Resource.cpp \
+    Sales_item.cpp \
+    exceptions.cpp
 
 HEADERS += \
     Basket.h \
     Bulk_item.h \
     Disc_item.h \
     Item_base.h \
-    Sales_item.h
+    Resource.h \
+    Sales_item.h \
+    exceptions.h
 unix {
     target.path = /usr/lib
     INSTALLS += target

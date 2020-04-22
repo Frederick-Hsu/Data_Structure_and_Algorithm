@@ -6,6 +6,8 @@
     #include <string>
     using namespace std;
 
+namespace CPlusPlus_Primer
+{
     class Query_base;
 
     /* handle class to manage the Query_base inheritance hierarchy */
@@ -36,5 +38,6 @@
     {
         return q.display(out);
     }
+}
 
 #endif  /* QUERY_H */

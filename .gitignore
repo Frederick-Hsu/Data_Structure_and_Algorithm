@@ -1,6 +1,8 @@
 # These file types as below will be ignored from the git tracking :
 *.exe
 *.o
+*.a
+*.out
 *.obj
 *.log
 *.ipch
@@ -18,8 +20,12 @@
 *.suo
 *.pdf
 *.new.obj.enc
+*.stackdump
 
 *build*/
 .vs/
 Interview/
+Interview_Test/
 temp/
+Multi_Threads/
+Tesla*/

@@ -4,6 +4,8 @@
     #include "Query_base.h"
     #include "Query.h"
 
+namespace CPlusPlus_Primer
+{
     class BinaryQuery : public Query_base
     {
     protected:
@@ -15,5 +17,6 @@
         const Query rhs;        /* right- and left-hand operands */
         const string oper;      /* name of the operator */
     };
+}
 
 #endif  /* BINARY_QUERY_H */

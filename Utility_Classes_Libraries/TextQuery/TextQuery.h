@@ -7,6 +7,8 @@
 	#include <map>
     #include <fstream>
 
+namespace CPlusPlus_Primer
+{
 	class TextQuery
 	{
 	public:
@@ -36,5 +38,6 @@
 					   const TextQuery& file);
 	std::string make_plural(std::size_t ctr, const std::string& word, const std::string& ending);
 	std::ifstream& open_file(std::ifstream& in, const std::string& file);
+}
 
 #endif	/* TEXTQUERY_H */

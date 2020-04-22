@@ -4,6 +4,8 @@
     #include "Item_base.h"
     #include <utility>
 
+namespace BookStore
+{
     /* class to hold discount rate and quality,
      * derived classes will implement pricing strategies using these data.
      */
@@ -24,5 +26,6 @@
         size_t quantity;    /* purchase size for discount to apply */
         double discount;    /* fractional discount to apply */
     };
+}
 
 #endif  /* DISC_ITEM_H */

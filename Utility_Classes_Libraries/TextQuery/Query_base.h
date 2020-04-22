@@ -6,6 +6,8 @@
     #include <iostream>
     using namespace std;
 
+namespace CPlusPlus_Primer
+{
     class Query_base
     {
         friend class Query;
@@ -19,6 +21,7 @@
         /* display prints the query */
         virtual ostream& display(ostream& = cout) const = 0;
     };
+}
 
 
 #endif  /* QUERY_BASE_H */

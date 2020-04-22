@@ -4,50 +4,53 @@
 #include "AndQuery.h"
 #include "OrQuery.h"
 
-Query::Query(const Query& orig) : q(orig.q), use(orig.use)
+namespace CPlusPlus_Primer
 {
-    ++(*use);
-}
-
-Query::~Query()
-{
-    decr_use();
-}
-
-Query::Query(Query_base* query) : q(query), use(new size_t(1))
-{
-}
-
-void Query::decr_use()
-{
-    if (--(*use) == 0)
+    Query::Query(const Query& orig) : q(orig.q), use(orig.use)
     {
-        delete q;
-        delete use;
+        ++(*use);
     }
-}
 
-set<TextQuery::line_no> Query::eval(const TextQuery &t) const
-{
-    return q->eval(t);
-}
+    Query::~Query()
+    {
+        decr_use();
+    }
 
-ostream& Query::display(ostream &out) const
-{
-    return q->display(out);
-}
+    Query::Query(Query_base* query) : q(query), use(new size_t(1))
+    {
+    }
 
-inline Query operator~(const Query& oper)
-{
-    return (new NotQuery(oper));
-}
+    void Query::decr_use()
+    {
+        if (--(*use) == 0)
+        {
+            delete q;
+            delete use;
+        }
+    }
 
-inline Query operator&(const Query& lhs, const Query& rhs)
-{
-    return (new AndQuery(lhs, rhs));
-}
+    set<TextQuery::line_no> Query::eval(const TextQuery &t) const
+    {
+        return q->eval(t);
+    }
 
-inline Query operator|(const Query& lhs, const Query& rhs)
-{
-    return new OrQuery(lhs, rhs);
+    ostream& Query::display(ostream &out) const
+    {
+        return q->display(out);
+    }
+
+    inline Query operator~(const Query& oper)
+    {
+        return (new NotQuery(oper));
+    }
+
+    inline Query operator&(const Query& lhs, const Query& rhs)
+    {
+        return (new AndQuery(lhs, rhs));
+    }
+
+    inline Query operator|(const Query& lhs, const Query& rhs)
+    {
+        return new OrQuery(lhs, rhs);
+    }
 }
