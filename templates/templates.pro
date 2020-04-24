@@ -1,5 +1,5 @@
 TEMPLATE = app
-CONFIG += console c++11
+CONFIG += console c++17
 CONFIG -= app_bundle
 CONFIG -= qt
 
@@ -10,6 +10,8 @@ SOURCES += \
     bookstore_app/Item_base.cpp \
     bookstore_app/Sales_item.cpp \
     class_template/misc.cpp \
+    class_template/template_parameter.cpp \
+    function_template/variadic_templates.cpp \
     function_template/verify.cpp \
     generic_handle/utilizing_handle.cpp \
     main.cpp \
@@ -26,8 +28,10 @@ HEADERS += \
     class_template/QueueItem.h \
     class_template/Screen.h \
     class_template/misc.h \
+    class_template/template_parameter.h \
     function_template/function_template.h \
     function_template/template_overload.h \
+    function_template/variadic_templates.h \
     function_template/verify.h \
     generic_handle/Handle.h \
     generic_handle/utilizing_handle.h \

@@ -1,6 +1,8 @@
 #ifndef TESTING_H
 #define TESTING_H
 
+    void execute_test_items(void);
+
     void instantiateClassTemplates(void);
 
     void instantiate_nontype_parameter_templates(void);
@@ -12,5 +14,9 @@
     void call_specialized_class_template(void);
 
     void verify_list_structure(void);
+
+    void differentiate_pointer_and_reference(void);
+
+    void calculate_data_size(void);
 
 #endif  /* TESTING_H */

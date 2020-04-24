@@ -13,21 +13,11 @@
 #include <iostream>
 
 #include "testing.h"
-#include "generic_handle/utilizing_handle.h"
 
 int main(int argc, char* argv[])
 {
-    // instantiateClassTemplates();
+    std::cout << "C++ standard no.: " << __cplusplus << std::endl;
 
-    instantiate_object_from_other_iterators_range();
-
-    how_generic_handle_works();
-
-    instantiateSpecificFnctTemplate();
-
-    call_specialized_class_template();
-
-    verify_list_structure();
-
+    execute_test_items();
     return 0;
 }
