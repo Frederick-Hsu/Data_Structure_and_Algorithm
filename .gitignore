@@ -1,6 +1,8 @@
 # These file types as below will be ignored from the git tracking :
 *.exe
 *.o
+*.a
+*.out
 *.obj
 *.log
 *.ipch

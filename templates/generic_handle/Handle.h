@@ -3,6 +3,7 @@
 
     #include <cstddef>
     #include <stdexcept>
+    #include <iostream>
     
     using namespace std;
     /* generic handle class :
@@ -36,8 +37,14 @@
 
 /*=================================================================================================*/
 
-    template<class Type> Handle<Type>::Handle(Type *p) : ptr(p), use(new size_t(1))
+    template<class Type> Handle<Type>::Handle(Type *p)
+    try : ptr(p), use(new size_t(1))
     {
+    }
+    catch (const std::bad_alloc& e)
+    {
+        // handle_out_of_memory(e);
+        cout << e.what() << endl;
     }
 
     template<class Type> Handle<Type>::Handle(const Handle& h) : ptr(h.ptr), use(h.use)

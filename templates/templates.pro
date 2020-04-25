@@ -15,7 +15,8 @@ SOURCES += \
     function_template/verify.cpp \
     generic_handle/utilizing_handle.cpp \
     main.cpp \
-    testing.cpp
+    testing.cpp \
+    user_exception/exception_error_handling.cpp
 
 HEADERS += \
     bookstore_app/Basket.h \
@@ -35,4 +36,5 @@ HEADERS += \
     function_template/verify.h \
     generic_handle/Handle.h \
     generic_handle/utilizing_handle.h \
-    testing.h
+    testing.h \
+    user_exception/exception_error_handling.h
