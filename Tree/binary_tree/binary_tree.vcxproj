@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="binary_search_threaded_tree.h" />
     <ClInclude Include="binary_search_tree.h" />
     <ClInclude Include="test_binary_search_tree.h" />
   </ItemGroup>

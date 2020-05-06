@@ -8,5 +8,6 @@ SOURCES += \
     test_binary_search_tree.cpp
 
 HEADERS += \
+    binary_search_threaded_tree.h \
     binary_search_tree.h \
     test_binary_search_tree.h

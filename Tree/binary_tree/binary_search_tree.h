@@ -6,13 +6,23 @@
 #define BINARY_SEARCH_TREE_H
 
     #include <queue>
+    #include <stack>
     #include <iostream>
+    #include <iomanip>
     #include <cstdio>
     using namespace std;
 
+    template<class ElemType> class Stack;
     template<class ElemType> class Queue;
     template<class ElemType> class BSTNode;
     template<class ElemType> class BST;
+
+    template<class ElemType> class Stack : public stack<ElemType>
+    {
+    public:
+        ElemType pop();
+        void push(const ElemType& element);
+    };
 
     template<class ElemType> class Queue : queue<ElemType>
     {
@@ -48,6 +58,8 @@
         ElemType* search(const ElemType& elem) const;
         void breadthFirst();
         void iterativePreorder();
+        void iterativePostorder();
+        void iterativeInorder();
     protected:
         void clear(BSTNode<ElemType>*);
         ElemType* search(BSTNode<ElemType>*, const ElemType&) const;
@@ -58,6 +70,18 @@
     };
 
 /*===============================================================================================*/
+
+    template<class ElemType> ElemType Stack<ElemType>::pop()
+    {
+        ElemType element = stack<ElemType>::top();
+        stack<ElemType>::pop();
+        return element;
+    }
+
+    template<class ElemType> void Stack<ElemType>::push(const ElemType& element)
+    {
+        stack<ElemType>::push(element);
+    }
 
     template<class ElemType> ElemType Queue<ElemType>::dequeue()
     {
@@ -91,7 +115,7 @@
         root = 0;
     }
 
-    template<class ElemType> BST<ElemType>::~BST<ElemType>()
+    template<class ElemType> BST<ElemType>::~BST()
     {
         clear();
     }
@@ -146,6 +170,137 @@
 
     template<class ElemType> void BST<ElemType>::visit(BSTNode<ElemType>* p)
     {
-        printf(" 0x%0016X    | %")
+        cout << " 0x" << setfill('0') << uppercase << hex << setw(16) << p << "  | "
+             << right << setw(16) << dec << p->element << "  |"
+             << " 0x" << setfill('0') << uppercase << hex << setw(16) << p->left << "  |"
+             << " 0x" << setfill('0') << uppercase << hex << setw(16) << p->right << endl;
+        cout << "---------------------+-------------------+---------------------+-----------------------" << endl;
+        cout << nouppercase << dec;
     }
+
+    template<class ElemType> void BST<ElemType>::inorder(BSTNode<ElemType>* p)
+    {
+        if (p != nullptr)
+        {
+            inorder(p->left);
+            visit(p);
+            inorder(p->right);
+        }
+    }
+
+    template<class ElemType> void BST<ElemType>::preorder(BSTNode<ElemType>* p)
+    {
+        if (p != nullptr)
+        {
+            visit(p);
+            preorder(p->left);
+            preorder(p->right);
+        }
+    }
+
+    template<class ElemType> void BST<ElemType>::postorder(BSTNode<ElemType>* p)
+    {
+        if (p != nullptr)
+        {
+            postorder(p->left);
+            postorder(p->right);
+            visit(p);
+        }
+    }
+
+    template<class ElemType> void BST<ElemType>::inorder()
+    {
+        inorder(root);
+    }
+
+    template<class ElemType> void BST<ElemType>::preorder()
+    {
+        preorder(root);
+    }
+
+    template<class ElemType> void BST<ElemType>::postorder()
+    {
+        postorder(root);
+    }
+
+    template<class ElemType> void BST<ElemType>::iterativePreorder()
+    {
+        Stack<BSTNode<ElemType>*> travStack;
+        BSTNode<ElemType> *p = root;
+        if (p != nullptr)
+        {
+            travStack.push(p);
+            while (!travStack.empty())
+            {
+                p = travStack.pop();
+                visit(p);
+                if (p->right != nullptr)
+                {
+                    travStack.push(p->right);
+                }
+                if (p->left != nullptr)     /* left-child should be pushed after right-child */
+                {
+                    travStack.push(p->left);
+                }
+
+            }
+        }
+    }
+
+    template<class ElemType> void BST<ElemType>::iterativePostorder()
+    {
+        Stack<BSTNode<ElemType>*> travStack;
+        BSTNode<ElemType> *p = root, *q = root;     /* q node as an auxiliary */
+        while (p != nullptr)
+        {
+            for (; p->left != nullptr; p = p->left)
+            {
+                travStack.push(p);
+            }
+            while ((p->left == nullptr) || (p->right == q))
+            {
+                visit(p);
+                q = p;
+                if (travStack.empty())
+                {
+                    return;
+                }
+                p = travStack.pop();
+            }
+            travStack.push(p);
+            p = p->right;
+        }
+    }
+
+    template<class ElemType> void BST<ElemType>::iterativeInorder()
+    {
+        Stack<BSTNode<ElemType>*> travStack;
+        BSTNode<ElemType>* p = root;
+        while (p != nullptr)
+        {
+            while (p != nullptr)    /* stack the right-child (if any) */
+            {
+                if (p->right)       /* and the node itsel when going to the left */
+                    travStack.push(p->right);
+                travStack.push(p);
+                p = p->left;
+            }
+            p = travStack.pop();    /* pop a node with no left-child visit it */
+            while (!travStack.empty() && p->right == nullptr)
+            {
+                visit(p);
+                p = travStack.pop();    /* and all nodes with no right-child */
+            }
+            visit(p);                   /* visit also the first node with a right-child (if any) */
+            if (!travStack.empty())
+            {
+                p = travStack.pop();
+            }
+            else
+            {
+                p = nullptr;
+            }
+        }
+    }
+
 #endif  /* BINARY_SEARCH_TREE_H */
