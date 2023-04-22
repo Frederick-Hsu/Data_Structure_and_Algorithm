@@ -1,0 +1,3 @@
+[submodule "hello-algo"]
+	path = hello-algo
+	url = git@github.com:krahets/hello-algo.git
