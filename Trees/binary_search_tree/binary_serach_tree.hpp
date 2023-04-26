@@ -31,7 +31,7 @@
     class BinarySearchTree
     {
     public:
-        BinarySearchTree(const ElemType& elem);
+        explicit BinarySearchTree(const ElemType& elem);
         BinarySearchTree(const BinarySearchTree& rhs);
         BinarySearchTree(BinarySearchTree&& rhs);
         BinarySearchTree& operator=(const BinarySearchTree& rhs);
