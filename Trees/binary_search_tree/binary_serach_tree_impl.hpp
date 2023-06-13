@@ -351,3 +351,125 @@ BinarySearchTree<ElemType>::BinaryNode::BinaryNode(ElemType&& elem,
     : element{std::move(elem)}, left{left_node}, right{right_node}
 {
 }
+
+template<typename ElemType>
+void BinarySearchTree<ElemType>::printTree(std::ostream& out) const
+{
+    if (isEmpty())
+    {
+        out << "Empty Tree" << std::endl;
+    }
+    else
+    {
+        printTree(root, out);
+    }
+}
+
+template<typename ElemType>
+void BinarySearchTree<ElemType>::printTree(BinarySearchTree<ElemType>::BinaryNode* tree,
+                                           std::ostream& out) const
+{
+    if (tree != nullptr)
+    {
+        printTree(tree->left, out);
+        out << tree->element << std::endl;
+        printTree(tree->right, out);
+    }
+}
+
+template<typename ElemType>
+void BinarySearchTree<ElemType>::preOrderTraversal(void (*access)(const ElemType&)) const
+{
+    if (isEmpty())
+    {
+        std::cout << "Current tree is empty." << std::endl;
+        return;
+    }
+    else
+    {
+        preOrderTraversal(root, access);
+    }
+}
+
+template<typename ElemType>
+void BinarySearchTree<ElemType>::preOrderTraversal(BinarySearchTree<ElemType>::BinaryNode* tree,
+                                                   void (*access)(const ElemType&)) const
+{
+    if (tree != nullptr)
+    {
+        access(tree->element);
+        preOrderTraversal(tree->left, access);
+        preOrderTraversal(tree->right, access);
+    }
+}
+
+template<typename ElemType>
+void BinarySearchTree<ElemType>::inOrderTraversal(BinarySearchTree<ElemType>::BinaryNode* tree,
+                                                  void (*access)(const ElemType&)) const
+{
+    if (tree != nullptr)
+    {
+        inOrderTraversal(tree->left, access);
+        access(tree->element);
+        inOrderTraversal(tree->right, access);
+    }
+}
+
+template<typename ElemType>
+void BinarySearchTree<ElemType>::postOrderTraversal(BinarySearchTree<ElemType>::BinaryNode* tree,
+                                                    void (*access)(const ElemType&)) const
+{
+    if (tree != nullptr)
+    {
+        postOrderTraversal(tree->left, access);
+        postOrderTraversal(tree->right, access);
+        access(tree->element);
+    }
+}
+
+template<typename ElemType>
+void BinarySearchTree<ElemType>::inOrderTraversal(void (*access)(const ElemType&)) const
+{
+    if (isEmpty())
+    {
+        std::cout << "Current tree is empty." << std::endl;
+        return;
+    }
+    else
+    {
+        inOrderTraversal(root, access);
+    }
+}
+
+template<typename ElemType>
+void BinarySearchTree<ElemType>::postOrderTraversal(void (*access)(const ElemType&)) const
+{
+    if (isEmpty())
+    {
+        std::cout << "Current tree is empty." << std::endl;
+        return;
+    }
+    else
+    {
+        postOrderTraversal(root, access);
+    }
+}
+
+template<typename ElemType>
+int BinarySearchTree<ElemType>::height(BinarySearchTree<ElemType>::BinaryNode* tree)
+{
+    if (tree == nullptr)
+    {
+        return -1;
+    }
+    else
+    {
+        return (1 + std::max(height(tree->left), height(tree->right)));
+    }
+}
+
+template<typename ElemType>
+int BinarySearchTree<ElemType>::treeHeight()
+{
+    return height(root);
+}

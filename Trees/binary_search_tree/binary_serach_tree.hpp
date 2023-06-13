@@ -47,6 +47,12 @@
         void insert(const ElemType& elem);
         void insert(ElemType&& elem);
         void remove(const ElemType& elem);
+
+        void preOrderTraversal(void (*access)(const ElemType& tree_node_element)) const;
+        void inOrderTraversal(void (*access)(const ElemType& tree_node_element)) const;
+        void postOrderTraversal(void (*access)(const ElemType& tree_node_element)) const;
+        void levelOrderTraversal(void (*access)(const ElemType& tree_node_element)) const;
+        int treeHeight();
     private:
         struct BinaryNode
         {
@@ -73,6 +79,11 @@
         void makeEmpty(BinaryNode*& tree);
         void printTree(BinaryNode* tree, std::ostream& out) const;
         BinaryNode* clone(BinaryNode* tree) const;
+        int height(BinaryNode* tree);
+
+        void preOrderTraversal(BinaryNode* tree, void (*access)(const ElemType&)) const;
+        void inOrderTraversal(BinaryNode* tree, void (*access)(const ElemType&)) const;
+        void postOrderTraversal(BinaryNode* tree, void (*access)(const ElemType&)) const;
     };
 
 
